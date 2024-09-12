@@ -1,0 +1,16 @@
+img {
+  width: 100px;
+  height: auto;
+  margin: 10px;
+}
+
+button {
+  margin-top: 20px;
+  margin-right: 10px;
+  padding: 10px;
+}
+
+p {
+  font-size: 18px;
+  font-weight: bold;
+}

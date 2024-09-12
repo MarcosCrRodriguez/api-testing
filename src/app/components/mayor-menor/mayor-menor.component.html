@@ -1,0 +1,56 @@
+<div>
+  <!-- Botón de "Start" -->
+  <button *ngIf="!gameStarted && !gameOver" (click)="startGame()">Start</button>
+
+  <!-- Mostrar el dorso de las cartas antes de que el juego comience -->
+  <div *ngIf="!gameStarted && !gameOver">
+    <img [src]="backCardImage" alt="Carta Máquina" />
+    <img [src]="backCardImage" alt="Carta Jugador" />
+  </div>
+
+  <!-- Mostrar las cartas si el juego ha comenzado -->
+  <div *ngIf="gameStarted || gameOver">
+    <!-- Mostramos el dorso o la carta dependiendo del estado -->
+    <img
+      [src]="cardsLoaded ? card1?.image : backCardImage"
+      alt="Carta Máquina"
+    />
+    <img
+      [src]="cardsLoaded ? card2?.image : backCardImage"
+      alt="Carta Jugador"
+    />
+  </div>
+
+  <!-- Puntaje de la máquina y el jugador -->
+  <p *ngIf="gameStarted || gameOver">Máquina: {{ machineScore }}</p>
+  <p *ngIf="gameStarted || gameOver">Jugador: {{ playerScore }}</p>
+
+  <!-- Botones de juego (solo si hay cartas y el juego no ha terminado) -->
+  <button
+    *ngIf="gameStarted && !noMoreCards"
+    [disabled]="gameOver"
+    (click)="playerChoice('higher')"
+  >
+    Alto
+  </button>
+  <button
+    *ngIf="gameStarted && !noMoreCards"
+    [disabled]="gameOver"
+    (click)="playerChoice('equal')"
+  >
+    Igual
+  </button>
+  <button
+    *ngIf="gameStarted && !noMoreCards"
+    [disabled]="gameOver"
+    (click)="playerChoice('lower')"
+  >
+    Bajo
+  </button>
+
+  <!-- Botón de "Volver a jugar" al final de la partida -->
+  <button *ngIf="gameOver" (click)="handleNewDeck()">Volver a jugar</button>
+
+  <!-- Mensaje de estado del juego -->
+  <p>{{ message }}</p>
+</div>

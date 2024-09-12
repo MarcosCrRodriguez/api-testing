@@ -1,0 +1,39 @@
+<!-- Mostrar Productos -->
+<h2>Productos</h2>
+<ul>
+  <li *ngFor="let product of products$ | async">
+    ID: {{ product.id }} - Nombre: {{ product.name }} - Costo:
+    {{ product.cost }} - Cantidad: {{ product.quantity }}
+  </li>
+</ul>
+
+<!-- Mostrar Familias -->
+<h2>Familias</h2>
+<ul>
+  <li *ngFor="let family of families$ | async">
+    ID: {{ family.id }} - Nombre: {{ family.name }}
+  </li>
+</ul>
+
+<!-- Mostrar Ubicaciones -->
+<h2>Ubicaciones</h2>
+<ul>
+  <li *ngFor="let location of locations$ | async">
+    ID: {{ location.id }} - Nombre: {{ location.name }}
+  </li>
+</ul>
+
+<!-- Mostrar Transacciones -->
+<h2>Transacciones</h2>
+<ul>
+  <li *ngFor="let transaction of transactions$ | async">
+    ID: {{ transaction.id }} - Costo: {{ transaction.cost }} - ID Producto:
+    {{ transaction.productId }} - Cantidad: {{ transaction.quantity }}
+  </li>
+</ul>
+
+<button
+  type="button"
+  class="btn btn-secondary"
+  (click)="ingresoMayorMenor()"
+></button>
